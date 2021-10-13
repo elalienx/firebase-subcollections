@@ -13,6 +13,7 @@ export default function App() {
 
   // Local state
   const [status, setStatus] = useState(0); // 0 loading, 1 loaded, 2 error
+  const path = "vehicles";
 
   // Methods
   const fetchData = useCallback(async (path) => {
@@ -26,9 +27,7 @@ export default function App() {
     }
   }, []);
 
-  useEffect(() => {
-    fetchData("vehicles");
-  }, [fetchData]);
+  useEffect(() => fetchData(path), [fetchData]);
 
   return (
     <div className="App">

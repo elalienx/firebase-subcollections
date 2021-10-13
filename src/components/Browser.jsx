@@ -11,8 +11,8 @@ export default function Browser() {
     <BrowserRouter>
       <Switch>
         <Route component={Home} exact path="/" />
-        <Route component={Category} path="/category/:id" />
-        <Route component={Vehicle} path="/vehicle/:id" />
+        <Route component={Category} path="/category/:categoryId" />
+        <Route component={Vehicle} path="/vehicle/:vehicleId" />
       </Switch>
     </BrowserRouter>
   );
