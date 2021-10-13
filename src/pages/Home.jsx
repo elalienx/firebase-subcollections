@@ -2,12 +2,12 @@
 import { Link } from "react-router-dom";
 
 // Project files
-import { useVehicles } from "../state/VehiclesProvider";
+import { useDealership } from "../state/DealershipProvider";
 import ItemCategory from "../components/ItemCategory";
 
 export default function Home() {
   // Global state
-  const { categories } = useVehicles();
+  const { categories } = useDealership();
 
   // Components
   const CategoryItems = categories.map((item) => (

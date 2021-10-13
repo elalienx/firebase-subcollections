@@ -5,11 +5,11 @@ import { useParams } from "react-router-dom";
 // Project files
 import ItemVehicle from "../components/ItemVehicle";
 import { getCollection } from "../scripts/firestore";
-import { useVehicles } from "../state/VehiclesProvider";
+import { useDealership } from "../state/DealershipProvider";
 
 export default function Category() {
   // Global state
-  const { categories } = useVehicles();
+  const { categories } = useDealership();
   const { categoryId } = useParams();
 
   // Local state

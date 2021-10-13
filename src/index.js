@@ -3,14 +3,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 // Project files
-import { VehiclesProvider } from "./state/VehiclesProvider";
+import { DealershipProvider } from "./state/DealershipProvider";
 import App from "./App";
 
 ReactDOM.render(
   <React.StrictMode>
-    <VehiclesProvider>
+    <DealershipProvider>
       <App />
-    </VehiclesProvider>
+    </DealershipProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
