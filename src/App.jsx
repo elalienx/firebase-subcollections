@@ -1,24 +1,37 @@
 // NPM Packages
+import { useState, useEffect, useCallback } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 // Project files
-import Category from "./pages/Category";
-import Home from "./pages/Home";
-import Vehicle from "./pages/Vehicle";
+import Browser from "./components/Browser";
+import { getCollection } from "./scripts/firestore";
 
 export default function App() {
-  
+  // Local state
+  const [status, setStatus] = useState(0); // 0 loading, 1 loaded, 2 error
+  const [data, setData] = useState([]);
 
+  // Methods
+  const fetchData = useCallback(async (path) => {
+    try {
+      const data = await getCollection(path);
+
+      setData(data);
+      setStatus(1);
+    } catch {
+      setStatus(2);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchData("vehicles");
+  }, [fetchData]);
 
   return (
     <div className="App">
-      <BrowserRouter>
-        <Switch>
-          <Route component={Home} exact path="/" />
-          <Route component={Category} path="category/:category-name" />
-          <Route component={Vehicle} path="vehicle/:id" />
-        </Switch>
-      </BrowserRouter>
+      {status === 0 && <p>Loading ⏱</p>}
+      {status === 1 && <Browser />}
+      {status === 2 && <p>Error 🚨</p>}
     </div>
   );
 }
