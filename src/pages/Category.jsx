@@ -9,7 +9,7 @@ import { useDealership } from "../state/DealershipProvider";
 
 export default function Category() {
   // Global state
-  const { categories } = useDealership();
+  const { categories, dispatch2 } = useDealership();
   const { categoryId } = useParams();
 
   // Local state
@@ -22,12 +22,11 @@ export default function Category() {
 
   // Methods
   const fetchData = useCallback(async (path) => {
-    console.log("Category.jsx fetchData() path", path);
     try {
-      const data = await getCollection(path);
+      const vehicles = await getCollection(path);
 
-      console.log(data);
-      setVehicles(data);
+      setVehicles(vehicles);
+      dispatch2({ type: "SET_VEHICLES", payload: vehicles });
       setStatus(1);
     } catch {
       setStatus(2);

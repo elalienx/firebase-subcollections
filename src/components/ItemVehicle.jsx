@@ -8,7 +8,6 @@ export default function ItemVehicle({ item, to }) {
     <li>
       <img src={imageURL} alt="Vehicle thumbnail" />
       <h2>{name}</h2>
-      <p>Starting from: ${price} MRSP</p>
       <Link className="button" to={to}>
         View vehicle
       </Link>
