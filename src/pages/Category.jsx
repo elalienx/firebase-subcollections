@@ -9,15 +9,15 @@ import { useVehicles } from "../state/VehiclesProvider";
 
 export default function Category() {
   // Global state
-  const { vehicles } = useVehicles();
+  const { categories } = useVehicles();
   const { categoryId } = useParams();
 
   // Local state
-  const [data, setData] = useState([]);
+  const [vehicles, setVehicles] = useState([]);
   const [status, setStatus] = useState(0); // 0 loading, 1 loaded, 2 error
 
   // Properties
-  const category = vehicles.find((item) => item.id === categoryId);
+  const category = categories.find((item) => item.id === categoryId);
   const path = `vehicles/${categoryId}/content`;
 
   // Methods
@@ -27,7 +27,7 @@ export default function Category() {
       const data = await getCollection(path);
 
       console.log(data);
-      setData(data);
+      setVehicles(data);
       setStatus(1);
     } catch {
       setStatus(2);
@@ -37,7 +37,7 @@ export default function Category() {
   useEffect(() => fetchData(path), [fetchData]);
 
   // Components
-  const Categories = data.map((item) => (
+  const Categories = vehicles.map((item) => (
     <ItemVehicle key={item.id} item={item} to={`/vehicle/${item.id}`} />
   ));
 

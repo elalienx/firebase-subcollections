@@ -9,10 +9,10 @@ const VehiclesContext = createContext(null);
 
 export function VehiclesProvider({ children }) {
   // Local state
-  const [vehicles, dispatch] = useReducer(vehiclesReducer, []);
+  const [categories, dispatch] = useReducer(vehiclesReducer, []);
 
   return (
-    <VehiclesContext.Provider value={{ vehicles, dispatch }}>
+    <VehiclesContext.Provider value={{ categories, dispatch }}>
       {children}
     </VehiclesContext.Provider>
   );

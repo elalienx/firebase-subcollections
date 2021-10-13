@@ -7,10 +7,10 @@ import ItemCategory from "../components/ItemCategory";
 
 export default function Home() {
   // Global state
-  const { vehicles } = useVehicles();
+  const { categories } = useVehicles();
 
   // Components
-  const Categories = vehicles.map((item) => (
+  const CategoryItems = categories.map((item) => (
     <Link key={item.id} to={`/category/${item.id}`}>
       <ItemCategory item={item} />
     </Link>
@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <div>
       <h1>Home</h1>
-      <ol>{Categories}</ol>
+      <ol>{CategoryItems}</ol>
     </div>
   );
 }
