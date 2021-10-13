@@ -5,18 +5,21 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 // Project files
 import Browser from "./components/Browser";
 import { getCollection } from "./scripts/firestore";
+import { useVehicles } from "./state/VehiclesProvider";
 
 export default function App() {
+  // Global state
+  const { dispatch } = useVehicles();
+
   // Local state
   const [status, setStatus] = useState(0); // 0 loading, 1 loaded, 2 error
-  const [data, setData] = useState([]);
 
   // Methods
   const fetchData = useCallback(async (path) => {
     try {
       const data = await getCollection(path);
 
-      setData(data);
+      dispatch({ type: "SET_VEHICLES", payload: data });
       setStatus(1);
     } catch {
       setStatus(2);

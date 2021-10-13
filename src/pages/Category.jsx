@@ -1,7 +1,7 @@
 export default function Category() {
   return (
     <div>
-      <h1>Vehicles</h1>
+      <h1>Category: @name@</h1>
     </div>
   );
 }
