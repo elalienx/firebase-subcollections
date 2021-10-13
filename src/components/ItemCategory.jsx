@@ -4,7 +4,6 @@ export default function ItemCategory({ item }) {
   return (
     <li>
       <h2>{name}</h2>
-      <p>{description}</p>
       <img src={imageURL} alt="Category thumbnail" />
     </li>
   );
